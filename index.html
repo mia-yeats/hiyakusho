@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>避役所 | Ministry of Camouflage</title>
+<title>避役所 | Off-Duty Bureau</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spectral:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -29,7 +29,6 @@
   }
   a{color:inherit;}
 
-  /* ---------- 上部ユーティリティバー（言語切替） ---------- */
   .utility-bar{
     height:var(--utility-h);
     display:flex; align-items:center; justify-content:flex-end;
@@ -51,7 +50,6 @@
   .lang-switch button.active{color:var(--brass); background:var(--paper);}
   .lang-switch button:focus-visible{outline:2px solid var(--teal); outline-offset:-2px;}
 
-  /* ---------- ヘッダー ---------- */
   header{
     position:relative;
     padding:1.6rem 6vw 1.4rem;
@@ -86,7 +84,6 @@
     max-width:44ch;
   }
 
-  /* ---------- レイアウト本体：左ナビ + 右パネル ---------- */
   .layout{
     display:grid;
     grid-template-columns: 220px 1fr;
@@ -129,7 +126,6 @@
   .idx-link.active{background:var(--paper); color:var(--brass); border-left:2px solid var(--brass); padding-left:calc(1.6rem - 2px);}
   .idx-link:focus-visible{outline:2px solid var(--teal); outline-offset:-2px;}
 
-  /* ---------- 右カラム：詳細パネル ---------- */
   .detail-panel{
     padding:3rem 5vw;
     min-height:calc(100vh - var(--header-h) - var(--utility-h));
@@ -161,7 +157,6 @@
   }
   .text-body .secondary p{margin:0 0 0.8rem; font-size:0.92rem;}
 
-  /* ---------- Info欄：匿名プロフィール ---------- */
   .profile{
     display:flex; flex-direction:column; align-items:flex-start;
     gap:0.8rem;
@@ -213,7 +208,6 @@
   .out:hover{color:var(--brass);}
   .out:focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
 
-  /* TOPページ下部に表示する著作権表記 */
   .copyright{
     margin-top:auto;
     padding-top:2.4rem;
@@ -239,9 +233,6 @@
 
   @media (prefers-reduced-motion: reduce){ *{transition:none;} }
 
-  /* ---------- モバイル：横スクロールタブバー＋共通パネル ----------
-     縦の目録リストを、上部固定・横スクロールのタブバーに切り替え、
-     選択内容はデスクトップと同じ detail-panel にそのまま表示します。 */
   @media (max-width:860px){
     :root{--header-h:auto;}
     .utility-bar{padding:0 5vw;}
@@ -294,7 +285,6 @@
 
 <div class="layout">
 
-  <!-- 左：大項目ナビ（英字ラベルは全言語共通） -->
   <aside class="sidebar" id="sidebar">
     <ul class="idx" id="nav-list">
       <li class="idx-item"><button class="idx-link" data-id="top">Top</button></li>
@@ -309,7 +299,6 @@
     </ul>
   </aside>
 
-  <!-- 右：詳細パネル（デスクトップ・モバイル共通でここが書き換わる） -->
   <section class="detail-panel" id="detail-panel"></section>
 
 </div>
@@ -325,43 +314,34 @@
 </footer>
 
 <script>
-  /*
-    サイト全体の固定文言。
-    サブタイトルは「もう一方の名前」を表示する仕様です。
-    中国語版のみ、漢字「避役所」がそのまま読めてしまい
-    誤読（兵役忌避のような意味）を招く恐れがあるため、
-    ローマ字表記 "Hiyakusho" を使っています。
-    ※ アラビア語・ロシア語は一旦保留（第二階層）とし、
-      必要になった際にこの構造のまま追加できます。
-  */
   const i18n = {
     ja: {
       eyebrow: "個人創作アーカイブ・目録",
       siteTitle: "避役所",
-      siteSubtitle: "Ministry of Camouflage",
-      tagline: "",
+      siteSubtitle: "Off-Duty Bureau",
+      tagline: "for anyone off the clock and out of character",
       lastUpdated: "最終更新: 2026.08 / 私家版目録",
       itemsCount: n => `全${n}件`,
     },
     en: {
       eyebrow: "A personal archive of creative work",
-      siteTitle: "Ministry of Camouflage",
+      siteTitle: "Off-Duty Bureau",
       siteSubtitle: "避役所",
-      tagline: "a chamber for those who have no fixed shape",
+      tagline: "for anyone off the clock and out of character",
       lastUpdated: "Last updated: Aug 2026 / private catalogue",
       itemsCount: n => `${n} item${n === 1 ? '' : 's'}`,
     },
     zh: {
       eyebrow: "个人创作档案 · 目录",
-      siteTitle: "伪装部",
-      siteSubtitle: "Hiyakusho",
+      siteTitle: "下班局",
+      siteSubtitle: "避役所",
       tagline: "献给没有固定形状之人的一处居所。",
       lastUpdated: "最后更新：2026年8月 / 私人目录",
       itemsCount: n => `共${n}项`,
     },
     es: {
       eyebrow: "Un archivo personal de trabajo creativo",
-      siteTitle: "Ministerio del Camuflaje",
+      siteTitle: "Departamento Fuera de Turno",
       siteSubtitle: "避役所",
       tagline: "una guarida para quienes no tienen una forma fija.",
       lastUpdated: "Última actualización: ago. 2026 / catálogo privado",
@@ -369,7 +349,7 @@
     },
     pt: {
       eyebrow: "Um arquivo pessoal de trabalho criativo",
-      siteTitle: "Ministério da Camuflagem",
+      siteTitle: "Repartição de Folga",
       siteSubtitle: "避役所",
       tagline: "um refúgio para quem não tem uma forma fixa.",
       lastUpdated: "Última atualização: ago. 2026 / catálogo privado",
@@ -377,11 +357,6 @@
     }
   };
 
-  /*
-    各カテゴリのデータ。
-    title はナビ表記と揃えて全言語共通の英字表記のままにしています。
-    body / items の title・desc・label は ja/en/zh/es/pt で個別に用意しています。
-  */
   const categories = {
     top: {
       type: "text",
@@ -655,7 +630,6 @@
   function renderCurrent(){
     const data = categories[activeId];
     renderPanel(activeId, data);
-    /* 選択中タブが画面外（スマホの横スクロール時）にあれば見える位置までスクロール */
     const btn = document.querySelector(`.idx-link[data-id="${activeId}"]`);
     if(btn) btn.scrollIntoView({block:'nearest', inline:'nearest'});
   }
@@ -677,7 +651,6 @@
     });
   });
 
-  /* 初期表示 */
   applyStaticI18n();
   document.querySelector('.idx-link[data-id="top"]').classList.add('active');
   renderCurrent();
