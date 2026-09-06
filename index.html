@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>避役所 | Off-Duty Bureau</title>
+<title>避役所 | Ministry of Camouflage</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spectral:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -29,6 +29,7 @@
   }
   a{color:inherit;}
 
+  /* ---------- 上部ユーティリティバー（言語切替） ---------- */
   .utility-bar{
     height:var(--utility-h);
     display:flex; align-items:center; justify-content:flex-end;
@@ -50,6 +51,7 @@
   .lang-switch button.active{color:var(--brass); background:var(--paper);}
   .lang-switch button:focus-visible{outline:2px solid var(--teal); outline-offset:-2px;}
 
+  /* ---------- ヘッダー ---------- */
   header{
     position:relative;
     padding:1.6rem 6vw 1.4rem;
@@ -84,6 +86,7 @@
     max-width:44ch;
   }
 
+  /* ---------- レイアウト本体：左ナビ + 右パネル ---------- */
   .layout{
     display:grid;
     grid-template-columns: 220px 1fr;
@@ -126,6 +129,7 @@
   .idx-link.active{background:var(--paper); color:var(--brass); border-left:2px solid var(--brass); padding-left:calc(1.6rem - 2px);}
   .idx-link:focus-visible{outline:2px solid var(--teal); outline-offset:-2px;}
 
+  /* ---------- 右カラム：詳細パネル ---------- */
   .detail-panel{
     padding:3rem 5vw;
     min-height:calc(100vh - var(--header-h) - var(--utility-h));
@@ -145,10 +149,10 @@
     font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--bone-dim);
   }
   .text-body{max-width:56ch; color:var(--bone-dim); font-size:1.02rem;}
-  .text-body .history{
-    font-size:0.9rem; color:var(--bone-dim); opacity:0.85;
-    border-left:2px solid var(--line); padding-left:0.8rem;
-    margin-top:1rem;
+  .text-body .section-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--teal); margin:0 0 0.6rem;
   }
   .text-body .out{margin-top:1.2rem;}
   .text-body .secondary{
@@ -157,6 +161,7 @@
   }
   .text-body .secondary p{margin:0 0 0.8rem; font-size:0.92rem;}
 
+  /* ---------- Info欄：匿名プロフィール ---------- */
   .profile{
     display:flex; flex-direction:column; align-items:flex-start;
     gap:0.8rem;
@@ -168,6 +173,7 @@
   .avatar-ring{fill:none; stroke:var(--brass); stroke-width:2;}
   .avatar-shape{fill:var(--paper); stroke:var(--bone-dim); stroke-width:1.5;}
   .profile-name{display:flex; flex-direction:column; gap:0.15rem;}
+  .profile .section-label{margin-bottom:0.9rem;}
   .profile-name .jp{
     font-family:'Fraunces', serif; font-weight:500; font-size:1.25rem; color:var(--bone);
   }
@@ -207,7 +213,9 @@
   }
   .out:hover{color:var(--brass);}
   .out:focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+  .card-links{display:flex; flex-direction:column; gap:0.5rem; margin-top:0.3rem;}
 
+  /* TOPページ下部に表示する著作権表記 */
   .copyright{
     margin-top:auto;
     padding-top:2.4rem;
@@ -233,6 +241,9 @@
 
   @media (prefers-reduced-motion: reduce){ *{transition:none;} }
 
+  /* ---------- モバイル：横スクロールタブバー＋共通パネル ----------
+     縦の目録リストを、上部固定・横スクロールのタブバーに切り替え、
+     選択内容はデスクトップと同じ detail-panel にそのまま表示します。 */
   @media (max-width:860px){
     :root{--header-h:auto;}
     .utility-bar{padding:0 5vw;}
@@ -285,6 +296,7 @@
 
 <div class="layout">
 
+  <!-- 左：大項目ナビ（英字ラベルは全言語共通） -->
   <aside class="sidebar" id="sidebar">
     <ul class="idx" id="nav-list">
       <li class="idx-item"><button class="idx-link" data-id="top">Top</button></li>
@@ -299,6 +311,7 @@
     </ul>
   </aside>
 
+  <!-- 右：詳細パネル（デスクトップ・モバイル共通でここが書き換わる） -->
   <section class="detail-panel" id="detail-panel"></section>
 
 </div>
@@ -308,12 +321,21 @@
     <a class="linkitem" href="#" target="_blank" rel="noopener">X (Twitter)</a>
     <a class="linkitem" href="#" target="_blank" rel="noopener">pixiv</a>
     <a class="linkitem" href="#" target="_blank" rel="noopener">カクヨム</a>
-    <a class="linkitem" href="mailto:you@example.com">メール</a>
+    <a class="linkitem" href="mailto:skeithdan@gmail.com">メール</a>
   </div>
   <p class="meta" data-i18n="lastUpdated"></p>
 </footer>
 
 <script>
+  /*
+    サイト全体の固定文言。
+    サブタイトルは「もう一方の名前」を表示する仕様です。
+    中国語版のみ、漢字「避役所」がそのまま読めてしまい
+    誤読（兵役忌避のような意味）を招く恐れがあるため、
+    ローマ字表記 "Hiyakusho" を使っています。
+    ※ アラビア語・ロシア語は一旦保留（第二階層）とし、
+      必要になった際にこの構造のまま追加できます。
+  */
   const i18n = {
     ja: {
       eyebrow: "個人創作アーカイブ・目録",
@@ -357,6 +379,11 @@
     }
   };
 
+  /*
+    各カテゴリのデータ。
+    title はナビ表記と揃えて全言語共通の英字表記のままにしています。
+    body / items の title・desc・label は ja/en/zh/es/pt で個別に用意しています。
+  */
   const categories = {
     top: {
       type: "text",
@@ -373,22 +400,24 @@
     info: {
       type: "text",
       title: "Info",
+      profileLabel: { ja:"管理人について", en:"About the Host", zh:"关于站主", es:"Sobre la persona a cargo", pt:"Sobre quem está por trás do site" },
+      bodyLabel: { ja:"サイトについて", en:"About this site", zh:"关于本站", es:"Sobre este sitio", pt:"Sobre este site" },
       body: {
-        ja:"プロフィール、活動歴、連絡先などをここにまとめてください。年齢や在住地など、公開したい範囲だけで構いません。",
-        en:"Add a short profile, background and contact details here. Share only what you're comfortable making public.",
-        zh:"在此填写个人简介、经历与联系方式。年龄、居住地等信息可自行决定是否公开。",
-        es:"Añade aquí un perfil breve, tu trayectoria y datos de contacto. Comparte solo lo que te sientas cómodo haciendo público.",
-        pt:"Adicione aqui um breve perfil, seu histórico e informações de contato. Compartilhe apenas o que quiser tornar público."
+        ja:"サークル名：避役所。.hack（無印／SIGN）の二次創作、SF系一次創作の掃き溜め",
+        en:"Circle name: Hiyakusho (避役所). Mostly creating .hack (Infection / SIGN) fan works, or original SF fiction.",
+        zh:"社团名：避役所。主要从事《.hack》（无印/SIGN）系列的二次创作，或原创科幻创作。",
+        es:"Nombre del círculo: Hiyakusho (避役所). Principalmente creo obras derivadas de .hack (Infection / SIGN) u obras originales de ciencia ficción.",
+        pt:"Nome do círculo: Hiyakusho (避役所). Principalmente crio obras derivadas de .hack (Infection / SIGN) ou ficção científica original."
       },
-      url: "mailto:you@example.com",
+      body2: {
+        ja:"本サイトは、2004年に開設された.hackファンサイト「スケィス団ウェブサイト」を起源としています。当時のサイトはすでに閉鎖されていますが、その精神を引き継ぐ形で本サイトを運営しています。",
+        en:"This site traces its origins to a .hack fan site called \u201cSukeisu-dan Website,\u201d first launched in 2004. That original site no longer exists, but this one carries its spirit forward.",
+        zh:"本站的起源可以追溯到2004年开设的一个《.hack》同人网站\u201cスケィス団ウェブサイト\u201d。原网站现已不存在，但本站延续着它的精神。",
+        es:"Este sitio tiene su origen en un sitio de fans de .hack llamado \u201cスケィス団ウェブサイト\u201d, creado en 2004. Aquel sitio original ya no existe, pero este continúa con su espíritu.",
+        pt:"Este site tem origem em um site de fãs de .hack chamado \u201cスケィス団ウェブサイト\u201d, criado em 2004. O site original não existe mais, mas este dá continuidade ao seu espírito."
+      },
+      url: "mailto:skeithdan@gmail.com",
       label: { ja:"連絡する", en:"Contact", zh:"联系", es:"Contactar", pt:"Contato" },
-      history: {
-        ja:"本サイトは、2002年より運営していた「スケィス団ウェブサイト」の後継にあたります。",
-        en:"This site is the successor to the \u201cSukeisu-dan Website,\u201d which had been running since 2002.",
-        zh:"本站是自2002年运营至今的\u201cスケィス団\u201d网站的后继站点。",
-        es:"Este sitio es el sucesor del \u201cスケィス団ウェブサイト\u201d, que estuvo en funcionamiento desde 2002.",
-        pt:"Este site é o sucessor do \u201cスケィス団ウェブサイト\u201d, que esteve em atividade desde 2002."
-      },
       profile: {
         nameJa: "家逸 ミア",
         nameEn: "Mia Yeats",
@@ -416,17 +445,21 @@
       items: [
         {
           num:"LOG.01",
-          title:{ja:"記事タイトルを入力",en:"Entry title",zh:"文章标题",es:"Título de la entrada",pt:"Título da postagem"},
-          desc:{ja:"その記事の要点を一文で。",en:"One line summarizing the post.",zh:"用一句话概括该文章的要点。",es:"Una línea que resuma la entrada.",pt:"Uma linha resumindo a postagem."},
-          tags:["制作記","2026.08"], url:"#",
-          label:{ja:"記事を読む",en:"Read entry",zh:"阅读文章",es:"Leer entrada",pt:"Ler postagem"}
+          title:{ja:"食レポ・旅レポ",en:"Food & travel reports",zh:"美食·旅行报告",es:"Reseñas de comida y viajes",pt:"Relatos de comida e viagem"},
+          desc:{ja:"食べたもの・行った場所の記録。写真多めの雑記です。",en:"Notes on things I've eaten and places I've been, mostly photos.",zh:"关于吃过的食物和去过的地方的记录，配图较多。",es:"Notas sobre lo que he comido y los lugares que he visitado, con muchas fotos.",pt:"Notas sobre o que comi e os lugares que visitei, com bastante fotos."},
+          tags:["はてな","日本語"],
+          links: [
+            { url:"https://miayeats.hatenablog.com/", label:{ja:"はてなブログで読む",en:"Read on Hatena Blog",zh:"在Hatena Blog阅读",es:"Leer en Hatena Blog",pt:"Ler no Hatena Blog"} }
+          ]
         },
         {
           num:"LOG.02",
-          title:{ja:"記事タイトルを入力",en:"Entry title",zh:"文章标题",es:"Título de la entrada",pt:"Título da postagem"},
-          desc:{ja:"ブログサービス側の記事一覧へのリンクでも構いません。",en:"Can also link out to your blog platform's post list.",zh:"也可以链接到博客平台的文章列表页面。",es:"También puede enlazar a la lista de publicaciones de tu plataforma de blog.",pt:"Também pode linkar para a lista de postagens da sua plataforma de blog."},
-          tags:["雑記"], url:"#",
-          label:{ja:"記事を読む",en:"Read entry",zh:"阅读文章",es:"Leer entrada",pt:"Ler postagem"}
+          title:{ja:"考えのまとめ（英語）",en:"Notes & essays",zh:"随笔与思考（英语）",es:"Notas y ensayos (en inglés)",pt:"Notas e ensaios (em inglês)"},
+          desc:{ja:"考えていることの整理。海外読者向けに英語で書いています。",en:"Longer-form thoughts, written in English for an international audience.",zh:"整理想法的随笔，用英语写给海外读者。",es:"Reflexiones más extensas, escritas en inglés para lectores internacionales.",pt:"Reflexões mais longas, escritas em inglês para leitores internacionais."},
+          tags:["Substack","English"],
+          links: [
+            { url:"#", label:{ja:"Substackで読む",en:"Read on Substack",zh:"在Substack阅读",es:"Leer en Substack",pt:"Ler no Substack"} }
+          ]
         }
       ]
     },
@@ -436,17 +469,22 @@
       items: [
         {
           num:"NOV.01",
-          title:{ja:"作品タイトルを入力",en:"Work title",zh:"作品标题",es:"Título de la obra",pt:"Título da obra"},
-          desc:{ja:"あらすじを一〜二文で。ジャンルや文字数の目安を添えると親切です。",en:"A one- or two-sentence synopsis. Note genre and length if helpful.",zh:"用一两句话写出梗概，附上题材与字数会更贴心。",es:"Una sinopsis de una o dos frases. Indicar género y extensión ayuda.",pt:"Uma sinopse de uma ou duas frases. Indicar gênero e extensão ajuda."},
-          tags:["連載中","ファンタジー"], url:"#",
-          label:{ja:"カクヨムで読む",en:"Read on Kakuyomu",zh:"在Kakuyomu阅读",es:"Leer en Kakuyomu",pt:"Ler no Kakuyomu"}
+          title:{ja:"（一次創作）作品タイトルを入力",en:"(Original) Work title",zh:"（原创）作品标题",es:"(Original) Título de la obra",pt:"(Original) Título da obra"},
+          desc:{ja:"オリジナルSF作品。日本語版と英語版で別々に公開しています。",en:"Original SF work, published separately in Japanese and English.",zh:"原创科幻作品，分别以日语和英语版本发布。",es:"Obra de ciencia ficción original, publicada por separado en japonés e inglés.",pt:"Obra de ficção científica original, publicada separadamente em japonês e inglês."},
+          tags:["オリジナルSF","連載中"],
+          links: [
+            { url:"https://kakuyomu.jp/users/miayeats", label:{ja:"カクヨムで読む（日本語）",en:"Read on Kakuyomu (Japanese)",zh:"在Kakuyomu阅读（日语）",es:"Leer en Kakuyomu (japonés)",pt:"Ler no Kakuyomu (japonês)"} },
+            { url:"#", label:{ja:"Read on AO3（英語・申請中）",en:"Read on AO3 (English, pending)",zh:"在AO3阅读（英语，申请中）",es:"Leer en AO3 (inglés, pendiente)",pt:"Ler no AO3 (inglês, pendente)"} }
+          ]
         },
         {
           num:"NOV.02",
-          title:{ja:"作品タイトルを入力",en:"Work title",zh:"作品标题",es:"Título de la obra",pt:"Título da obra"},
-          desc:{ja:"短編集や連作短編ならその旨を書いておくと分かりやすいです。",en:"Mention if it's a short story collection or series.",zh:"如果是短篇集或系列短篇，请注明。",es:"Indica si es una colección de relatos o una serie.",pt:"Indique se é uma coletânea de contos ou uma série."},
-          tags:["完結","短編"], url:"#",
-          label:{ja:"小説家になろうで読む",en:"Read on Syosetu",zh:"在Syosetu阅读",es:"Leer en Syosetu",pt:"Ler no Syosetu"}
+          title:{ja:"（二次創作）作品タイトルを入力",en:"(Fanfic) Work title",zh:"（同人）作品标题",es:"(Fanfic) Título de la obra",pt:"(Fanfic) Título da obra"},
+          desc:{ja:"二次創作小説。イラストと同じくpixivに掲載しています。",en:"A derivative fan novel, posted on pixiv alongside the illustrations.",zh:"二次创作小说，与插画一样发布在pixiv上。",es:"Novela derivada de fans, publicada en pixiv junto con las ilustraciones.",pt:"Novela derivada de fãs, publicada no pixiv junto com as ilustrações."},
+          tags:["二次創作"],
+          links: [
+            { url:"https://www.pixiv.net/users/10446560", label:{ja:"pixivで読む",en:"Read on pixiv",zh:"在pixiv阅读",es:"Leer en pixiv",pt:"Ler no pixiv"} }
+          ]
         }
       ]
     },
@@ -458,7 +496,7 @@
           num:"ILL.01",
           title:{ja:"イラスト①",en:"Illustration 1",zh:"插画一",es:"Ilustración 1",pt:"Ilustração 1"},
           desc:{ja:"一言の説明文をここに。制作時期や技法などを添えると目録らしくなります。",en:"A short caption. Adding a date or medium keeps the catalogue feel.",zh:"在此添加简短说明。注明创作时间或技法会更有目录感。",es:"Una breve descripción. Añadir fecha o técnica mantiene el tono de catálogo.",pt:"Uma breve descrição. Adicionar data ou técnica mantém o tom de catálogo."},
-          tags:["デジタル","2026"], url:"#",
+          tags:["デジタル","2026"], url:"https://www.pixiv.net/users/10446560",
           label:{ja:"pixivで見る",en:"View on pixiv",zh:"在pixiv查看",es:"Ver en pixiv",pt:"Ver no pixiv"}
         },
         {
@@ -472,7 +510,7 @@
           num:"ILL.03",
           title:{ja:"イラスト③",en:"Illustration 3",zh:"插画三",es:"Ilustración 3",pt:"Ilustração 3"},
           desc:{ja:"ギャラリー全体へのリンクにしてもOK。",en:"Can also link to your full gallery.",zh:"也可以链接到完整的画廊页面。",es:"También puede enlazar a tu galería completa.",pt:"Também pode linkar para sua galeria completa."},
-          tags:["ギャラリー"], url:"#",
+          tags:["ギャラリー"], url:"https://www.pixiv.net/users/10446560",
           label:{ja:"pixivで見る",en:"View on pixiv",zh:"在pixiv查看",es:"Ver en pixiv",pt:"Ver no pixiv"}
         }
       ]
@@ -560,10 +598,12 @@
     });
   }
 
-  function renderProfile(profile){
+  function renderProfile(profile, profileLabel){
+    const label = profileLabel ? `<p class="section-label">${profileLabel[lang]}</p>` : '';
     const bioHTML = profile.bio.map(b => `<p class="bio">${b[lang]}</p>`).join('');
     return `
       <div class="profile">
+        ${label}
         <div class="avatar">
           <svg viewBox="0 0 120 120" width="84" height="84" aria-hidden="true">
             <circle class="avatar-ring" cx="60" cy="60" r="57"/>
@@ -583,7 +623,9 @@
   }
 
   function renderTextBody(data){
+    const bodyLabel = data.bodyLabel ? `<p class="section-label">${data.bodyLabel[lang]}</p>` : '';
     const body = data.body[lang];
+    const body2 = data.body2 ? `<p>${data.body2[lang]}</p>` : '';
     const cta = data.url
       ? `<a class="out" href="${data.url}" target="_blank" rel="noopener">${data.label[lang]} →</a>`
       : '';
@@ -593,21 +635,28 @@
     const copyright = data.showCopyright
       ? `<p class="copyright">&copy; 2026 ${i18n[lang].siteTitle}. All rights reserved.</p>`
       : '';
-    const profile = data.profile ? renderProfile(data.profile) : '';
-    const history = data.history ? `<p class="history">${data.history[lang]}</p>` : '';
-    return `${profile}<div class="text-body"><p>${body}</p>${history}${cta}${secondary}</div>${copyright}`;
+    const profile = data.profile ? renderProfile(data.profile, data.profileLabel) : '';
+    return `${profile}<div class="text-body">${bodyLabel}<p>${body}</p>${body2}${cta}${secondary}</div>${copyright}`;
   }
 
   function renderList(data){
-    const cards = data.items.map(it => `
+    const cards = data.items.map(it => {
+      const linkList = it.links
+        ? it.links
+        : [{ url: it.url, label: it.label }];
+      const linksHTML = linkList
+        .map(l => `<a class="out" href="${l.url}" target="_blank" rel="noopener">${l.label[lang]} →</a>`)
+        .join('');
+      return `
       <article class="work-card">
         <span class="num">${it.num}</span>
         <h3>${it.title[lang]}</h3>
         <p>${it.desc[lang]}</p>
         <div class="tags">${it.tags.map(t=>`<span>${t}</span>`).join('')}</div>
-        <a class="out" href="${it.url}" target="_blank" rel="noopener">${it.label[lang]} →</a>
+        <div class="card-links">${linksHTML}</div>
       </article>
-    `).join('');
+    `;
+    }).join('');
     return `<div class="grid">${cards}</div>`;
   }
 
@@ -630,6 +679,7 @@
   function renderCurrent(){
     const data = categories[activeId];
     renderPanel(activeId, data);
+    /* 選択中タブが画面外（スマホの横スクロール時）にあれば見える位置までスクロール */
     const btn = document.querySelector(`.idx-link[data-id="${activeId}"]`);
     if(btn) btn.scrollIntoView({block:'nearest', inline:'nearest'});
   }
@@ -651,6 +701,7 @@
     });
   });
 
+  /* 初期表示 */
   applyStaticI18n();
   document.querySelector('.idx-link[data-id="top"]').classList.add('active');
   renderCurrent();
