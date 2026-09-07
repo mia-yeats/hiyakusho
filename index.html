@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>避役所 | Ministry of Camouflage</title>
+<title>避役所 | Off-Duty Bureau</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spectral:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -184,6 +184,21 @@
     color:var(--bone-dim); font-size:0.95rem; font-style:italic; margin:0;
   }
 
+  /* ---------- リストページ上部：外部プラットフォームへのクイックリンク ---------- */
+  .quicklinks{
+    display:flex; flex-wrap:wrap; gap:0.8rem;
+    margin-bottom:1.8rem; padding-bottom:1.6rem;
+    border-bottom:1px solid var(--line);
+  }
+  .quicklinks a{
+    display:inline-flex; align-items:center; gap:0.4rem;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.04em;
+    color:var(--bone); text-decoration:none;
+    border:1px solid var(--teal); padding:0.55rem 1rem;
+  }
+  .quicklinks a:hover{color:var(--brass); border-color:var(--brass);}
+  .quicklinks a:focus-visible{outline:2px solid var(--teal); outline-offset:2px;}
+
   .grid{
     display:grid;
     grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
@@ -214,6 +229,48 @@
   .out:hover{color:var(--brass);}
   .out:focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
   .card-links{display:flex; flex-direction:column; gap:0.5rem; margin-top:0.3rem;}
+
+  /* ---------- Linkページ：バナー置き場 ---------- */
+  .banner-section{margin-bottom:2.4rem;}
+  .banner-section:last-child{margin-bottom:0;}
+  .banner-grid{display:flex; flex-wrap:wrap; gap:0.8rem;}
+  .banner-slot{
+    display:flex; align-items:center; justify-content:center;
+    border:1px dashed var(--line);
+    background:var(--paper);
+    color:var(--bone-dim);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px; letter-spacing:0.02em; text-align:center;
+    text-decoration:none; overflow:hidden; padding:0 4px;
+  }
+  .banner-slot:hover{border-color:var(--brass); color:var(--brass);}
+  .banner-slot:focus-visible{outline:2px solid var(--teal); outline-offset:2px;}
+  .banner-slot img{width:100%; height:100%; object-fit:cover; display:block;}
+
+  .site-info-box{
+    max-width:56ch;
+    margin:2rem 0 2.4rem;
+    padding:1.4rem 1.5rem;
+    border:1px solid var(--line);
+    background:var(--paper);
+  }
+  .site-info-list{margin:0 0 1rem;}
+  .site-info-list > div{
+    display:flex; gap:0.6rem;
+    padding:0.35rem 0;
+    border-bottom:1px solid var(--line);
+    font-size:0.9rem;
+  }
+  .site-info-list > div:last-child{border-bottom:none;}
+  .site-info-list dt{
+    width:4.2em; flex-shrink:0; margin:0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--teal);
+  }
+  .site-info-list dd{margin:0; color:var(--bone-dim); word-break:break-all;}
+  .site-info-list dd .en{opacity:0.7;}
+  .site-info-box .note{margin:0; font-size:0.85rem; color:var(--bone-dim); font-style:italic;}
 
   /* TOPページ下部に表示する著作権表記 */
   .copyright{
@@ -318,9 +375,9 @@
 
 <footer>
   <div class="links">
-    <a class="linkitem" href="#" target="_blank" rel="noopener">X (Twitter)</a>
-    <a class="linkitem" href="#" target="_blank" rel="noopener">pixiv</a>
-    <a class="linkitem" href="#" target="_blank" rel="noopener">カクヨム</a>
+    <a class="linkitem" href="https://x.com/skeithdan" target="_blank" rel="noopener">X (Twitter)</a>
+    <a class="linkitem" href="https://www.pixiv.net/users/10446560" target="_blank" rel="noopener">pixiv</a>
+    <a class="linkitem" href="https://kakuyomu.jp/users/miayeats" target="_blank" rel="noopener">カクヨム</a>
     <a class="linkitem" href="mailto:skeithdan@gmail.com">メール</a>
   </div>
   <p class="meta" data-i18n="lastUpdated"></p>
@@ -374,20 +431,18 @@
   };
 
   /*
-    各カテゴリのデータ。
-    title はナビ表記と揃えて全言語共通の英字表記のままにしています。
-    body / items の title・desc・label は ja/en/zh/es/pt で個別に用意しています。
+    body / items の title・desc・label は ja/en/zh/es/pt で個別に用意
   */
   const categories = {
     top: {
       type: "text",
       title: "Top",
       body: {
-        ja:"ここにサイト全体のご挨拶や近況を書いてください。イラスト・小説・ブログなど、活動全体を一つの棚として並べています。",
-        en:"Write a short welcome or update here. This site gathers illustration, fiction and writing into one shelf.",
-        zh:"在这里写下问候语或近况。本站将插画、小说、博客等创作汇集于同一处。",
-        es:"Escribe aquí un saludo o una actualización breve. Este sitio reúne ilustración, ficción y escritura en un mismo estante.",
-        pt:"Escreva aqui uma breve saudação ou atualização. Este site reúne ilustração, ficção e textos em uma única estante."
+        ja:"◾創作＆二次創作等を展示しています。各版権元とは無関係のファンサイトです。",
+        en:"◾Displaying original creations and fanworks. This is an unofficial fan site with no affiliation to the original copyright holders.",
+        zh:"◾展示原创及二次创作作品。本站为与各版权方无关的同人网站。",
+        es:"◾Aquí se muestran obras originales y trabajos derivados (fan works). Este es un sitio de fans sin relación con los titulares de derechos originales.",
+        pt:"◾Aqui são exibidas obras originais e trabalhos derivados (fanworks). Este é um site de fãs sem relação com os detentores dos direitos originais."
       },
       showCopyright: true
     },
@@ -404,11 +459,11 @@
         pt:"Nome do círculo: Hiyakusho (避役所). Principalmente crio obras derivadas de .hack (Infection / SIGN) ou ficção científica original."
       },
       body2: {
-        ja:"経緯：2004年に開設された.hackファンサイト「スケィス団ウェブサイト」を起源としつつ、サイト管理人の関心が別分野や一次創作にも波及していった結果現在の雑多コンテンツ集約型に。",
-        en:"This site traces its origins to a .hack fan site called \u201cSukeisu-dan Website,\u201d first launched in 2004. That original site no longer exists, but this one carries its spirit forward.",
-        zh:"本站的起源可以追溯到2004年开设的一个《.hack》同人网站\u201cスケィス団ウェブサイト\u201d。原网站现已不存在，但本站延续着它的精神。",
-        es:"Este sitio tiene su origen en un sitio de fans de .hack llamado \u201cスケィス団ウェブサイト\u201d, creado en 2004. Aquel sitio original ya no existe, pero este continúa con su espíritu.",
-        pt:"Este site tem origem em um site de fãs de .hack chamado \u201cスケィス団ウェブサイト\u201d, criado em 2004. O site original não existe mais, mas este dá continuidade ao seu espírito."
+        ja:"経緯：2004年に開設された.hackファンサイト「スケィス団ウェブサイト」と同じ管理人が運営するサイト。管理人の関心が多方面に波及していった結果の雑多コンテンツ集積地",
+        en:"Background: Run by the same person behind the .hack fan site \u201cSukeisu-dan Website,\u201d launched in 2004. As my interests spread into other areas, it grew into this scattershot collection of content.",
+        zh:"缘起：本站与2004年开设的《.hack》同人网站\u201cスケィス団ウェブサイト\u201d由同一位站主运营。随着站主兴趣扩展到多个领域，逐渐变成了如今这个杂项内容的聚集地。",
+        es:"Origen: Este sitio está gestionado por la misma persona que administraba el sitio de fans de .hack \u201cスケィス団ウェブサイト\u201d, lanzado en 2004. A medida que mis intereses se fueron ampliando a otras áreas, se convirtió en este cúmulo de contenido variado.",
+        pt:"Origem: Este site é administrado pela mesma pessoa por trás do site de fãs de .hack \u201cスケィス団ウェブサイト\u201d, lançado em 2004. À medida que meus interesses se expandiram para outras áreas, ele se tornou este acervo de conteúdo variado."
       },
       url: "mailto:skeithdan@gmail.com",
       label: { ja:"連絡する", en:"Contact", zh:"联系", es:"Contactar", pt:"Contato" },
@@ -436,11 +491,15 @@
     blog: {
       type: "list",
       title: "Blog",
+      quickLinks: [
+        { url:"https://miayeats.hatenablog.com/", label:{ja:"はてなブログで食レポ・旅レポを見る",en:"See food & travel reports on Hatena Blog",zh:"在Hatena Blog查看美食·旅行报告",es:"Ver reseñas de comida y viajes en Hatena Blog",pt:"Ver relatos de comida e viagem no Hatena Blog"} },
+        { url:"#", label:{ja:"Substackで雑記を見る",en:"See notes & essays on Substack",zh:"在Substack查看随笔",es:"Ver notas y ensayos en Substack",pt:"Ver notas e ensaios no Substack"} }
+      ],
       items: [
         {
           num:"LOG.01",
           title:{ja:"食レポ・旅レポ",en:"Food & travel reports",zh:"美食·旅行报告",es:"Reseñas de comida y viajes",pt:"Relatos de comida e viagem"},
-          desc:{ja:"食べたもの・行った場所の記録。写真多めの雑記です。",en:"Notes on things I've eaten and places I've been, mostly photos.",zh:"关于吃过的食物和去过的地方的记录，配图较多。",es:"Notas sobre lo que he comido y los lugares que he visitado, con muchas fotos.",pt:"Notas sobre o que comi e os lugares que visitei, com bastante fotos."},
+          desc:{ja:"食べたもの・行った場所の記録。写真多めの雑記",en:"Notes on things I've eaten and places I've been, mostly photos.",zh:"关于吃过的食物和去过的地方的记录，配图较多。",es:"Notas sobre lo que he comido y los lugares que he visitado, con muchas fotos.",pt:"Notas sobre o que comi e os lugares que visitei, com bastante fotos."},
           tags:["はてな","日本語"],
           links: [
             { url:"https://miayeats.hatenablog.com/", label:{ja:"はてなブログで読む",en:"Read on Hatena Blog",zh:"在Hatena Blog阅读",es:"Leer en Hatena Blog",pt:"Ler no Hatena Blog"} }
@@ -449,7 +508,7 @@
         {
           num:"LOG.02",
           title:{ja:"考えのまとめ（英語）",en:"Notes & essays",zh:"随笔与思考（英语）",es:"Notas y ensayos (en inglés)",pt:"Notas e ensaios (em inglês)"},
-          desc:{ja:"考えていることの整理。海外読者向けに英語で書いています。",en:"Longer-form thoughts, written in English for an international audience.",zh:"整理想法的随笔，用英语写给海外读者。",es:"Reflexiones más extensas, escritas en inglés para lectores internacionales.",pt:"Reflexões mais longas, escritas em inglês para leitores internacionais."},
+          desc:{ja:"考えていることの整理。",en:"Longer-form thoughts and essays.",zh:"整理想法的随笔。",es:"Notas y reflexiones más extensas.",pt:"Notas e reflexões mais longas."},
           tags:["Substack","English"],
           links: [
             { url:"#", label:{ja:"Substackで読む",en:"Read on Substack",zh:"在Substack阅读",es:"Leer en Substack",pt:"Ler no Substack"} }
@@ -460,11 +519,15 @@
     novels: {
       type: "list",
       title: "Novels",
+      quickLinks: [
+        { url:"https://kakuyomu.jp/users/miayeats", label:{ja:"カクヨムで一次創作を見る",en:"See original fiction on Kakuyomu",zh:"在Kakuyomu查看原创作品",es:"Ver ficción original en Kakuyomu",pt:"Ver ficção original no Kakuyomu"} },
+        { url:"https://www.pixiv.net/users/10446560/novels", label:{ja:"pixivで二次創作を見る",en:"See fanfiction on pixiv",zh:"在pixiv查看二次创作",es:"Ver fanfiction en pixiv",pt:"Ver fanfiction no pixiv"} }
+      ],
       items: [
         {
           num:"NOV.01",
           title:{ja:"（一次創作）作品タイトルを入力",en:"(Original) Work title",zh:"（原创）作品标题",es:"(Original) Título de la obra",pt:"(Original) Título da obra"},
-          desc:{ja:"オリジナルSF作品。日本語版と英語版で別々に公開しています。",en:"Original SF work, published separately in Japanese and English.",zh:"原创科幻作品，分别以日语和英语版本发布。",es:"Obra de ciencia ficción original, publicada por separado en japonés e inglés.",pt:"Obra de ficção científica original, publicada separadamente em japonês e inglês."},
+          desc:{ja:"オリジナルSF作品。",en:"Original SF work.",zh:"原创科幻作品。",es:"Obra de ciencia ficción original.",pt:"Obra de ficção científica original."},
           tags:["オリジナルSF","連載中"],
           links: [
             { url:"https://kakuyomu.jp/users/miayeats", label:{ja:"カクヨムで読む（日本語）",en:"Read on Kakuyomu (Japanese)",zh:"在Kakuyomu阅读（日语）",es:"Leer en Kakuyomu (japonés)",pt:"Ler no Kakuyomu (japonês)"} },
@@ -474,7 +537,7 @@
         {
           num:"NOV.02",
           title:{ja:"（二次創作）作品タイトルを入力",en:"(Fanfic) Work title",zh:"（同人）作品标题",es:"(Fanfic) Título de la obra",pt:"(Fanfic) Título da obra"},
-          desc:{ja:"二次創作小説。イラストと同じくpixivに掲載しています。",en:"A derivative fan novel, posted on pixiv alongside the illustrations.",zh:"二次创作小说，与插画一样发布在pixiv上。",es:"Novela derivada de fans, publicada en pixiv junto con las ilustraciones.",pt:"Novela derivada de fãs, publicada no pixiv junto com as ilustrações."},
+          desc:{ja:"二次創作小説。イラストと同じくpixivに掲載",en:"A derivative fan novel, posted on pixiv alongside the illustrations.",zh:"二次创作小说，与插画一样发布在pixiv上。",es:"Novela derivada de fans, publicada en pixiv junto con las ilustraciones.",pt:"Novela derivada de fãs, publicada no pixiv junto com as ilustrações."},
           tags:["二次創作"],
           links: [
             { url:"https://www.pixiv.net/users/10446560", label:{ja:"pixivで読む",en:"Read on pixiv",zh:"在pixiv阅读",es:"Leer en pixiv",pt:"Ler no pixiv"} }
@@ -485,17 +548,20 @@
     illustration: {
       type: "list",
       title: "Illustration",
+      quickLinks: [
+        { url:"https://www.pixiv.net/users/10446560/illustrations", label:{ja:"pixivでイラストを見る",en:"View illustrations on pixiv",zh:"在pixiv查看插画",es:"Ver ilustraciones en pixiv",pt:"Ver ilustrações no pixiv"} }
+      ],
       items: [
         {
           num:"ILL.01",
           title:{ja:"イラスト①",en:"Illustration 1",zh:"插画一",es:"Ilustración 1",pt:"Ilustração 1"},
-          desc:{ja:"一言の説明文をここに。制作時期や技法などを添えると目録らしくなります。",en:"A short caption. Adding a date or medium keeps the catalogue feel.",zh:"在此添加简短说明。注明创作时间或技法会更有目录感。",es:"Una breve descripción. Añadir fecha o técnica mantiene el tono de catálogo.",pt:"Uma breve descrição. Adicionar data ou técnica mantém o tom de catálogo."},
+          desc:{ja:"禍々しき波関連",en:"Related to \u201cthe ominous wave.\u201d",zh:"与\u201c禍々しき波（不祥之波）\u201d相关。",es:"Relacionado con \u201cla ola siniestra.\u201d",pt:"Relacionado com \u201ca onda sinistra.\u201d"},
           tags:["デジタル","2026"], url:"https://www.pixiv.net/users/10446560",
           label:{ja:"pixivで見る",en:"View on pixiv",zh:"在pixiv查看",es:"Ver en pixiv",pt:"Ver no pixiv"}
         },
         {
           num:"ILL.02",
-          title:{ja:"イラスト②",en:"Illustration 2",zh:"插画三",es:"Ilustración 2",pt:"Ilustração 2"},
+          title:{ja:"イラスト②",en:"Illustration 2",zh:"插画二",es:"Ilustración 2",pt:"Ilustração 2"},
           desc:{ja:"ギャラリー全体へのリンクにしてもOK。",en:"Can also link to your full gallery.",zh:"也可以链接到完整的画廊页面。",es:"También puede enlazar a tu galería completa.",pt:"Também pode linkar para sua galeria completa."},
           tags:["ギャラリー"], url:"https://www.pixiv.net/users/10446560",
           label:{ja:"pixivで見る",en:"View on pixiv",zh:"在pixiv查看",es:"Ver en pixiv",pt:"Ver no pixiv"}
@@ -503,23 +569,38 @@
       ]
     },
     link: {
-      type: "list",
+      type: "banners",
       title: "Link",
-      items: [
+      bannerSize: { w:88, h:31 },
+      friendLabel: { ja:"お世話になっているサイト", en:"Sites We Appreciate", zh:"特别感谢的网站", es:"Sitios a los que agradecemos", pt:"Sites aos quais somos gratos" },
+      friendSites: [
         {
-          num:"LNK.01",
-          title:{ja:"相互リンク先の名前",en:"Linked site name",zh:"友情链接站点名称",es:"Nombre del sitio enlazado",pt:"Nome do site vinculado"},
-          desc:{ja:"どんなサイトかの一言紹介。",en:"A short note on what the site is.",zh:"用一句话介绍该网站。",es:"Una breve nota sobre el sitio.",pt:"Uma breve nota sobre o site."},
-          tags:["相互"], url:"#",
-          label:{ja:"サイトを見る",en:"Visit site",zh:"访问网站",es:"Visitar sitio",pt:"Visitar site"}
+          name: { ja:"相互リンク先の名前", en:"Linked site name", zh:"友情链接站点名称", es:"Nombre del sitio enlazado", pt:"Nome do site vinculado" },
+          url: "#"
         },
         {
-          num:"LNK.02",
-          title:{ja:"お世話になっているサイト",en:"A site you'd like to credit",zh:"想要致谢的网站",es:"Un sitio al que quieras dar crédito",pt:"Um site que você queira creditar"},
-          desc:{ja:"紹介文をここに。",en:"A short description here.",zh:"在此填写简介。",es:"Una breve descripción aquí.",pt:"Uma breve descrição aqui."},
-          tags:[], url:"#",
-          label:{ja:"サイトを見る",en:"Visit site",zh:"访问网站",es:"Visitar sitio",pt:"Visitar site"}
+          name: { ja:"お世話になっているサイト", en:"A site you'd like to credit", zh:"想要致谢的网站", es:"Un sitio al que quieras dar crédito", pt:"Um site que você queira creditar" },
+          url: "#"
         }
+      ],
+      siteInfoLabel: { ja:"当サイトについて（リンク用）", en:"About This Site (for Linking)", zh:"关于本站（用于链接）", es:"Sobre este sitio (para enlazar)", pt:"Sobre este site (para link)" },
+      siteInfo: {
+        name: "避役所", nameEn: "Off-Duty Bureau",
+        url: "https://mia-yeats.github.io/hiyakusho/",
+        admin: "家逸 ミア", adminEn: "Mia Yeats",
+        note: {
+          ja:"当サイトはリンクフリーです。リンクの際は下記バナーをご自由にお使いください。",
+          en:"This site is link-free — feel free to link without asking. Banners for linking are available below.",
+          zh:"本站欢迎自由链接，无需另行告知。可自由使用下方横幅进行链接。",
+          es:"Este sitio es de enlace libre: puedes enlazarlo sin avisar. Los banners para enlazar están disponibles abajo.",
+          pt:"Este site é de link livre: sinta-se à vontade para linkar sem avisar. Banners para link estão disponíveis abaixo."
+        }
+      },
+      ownBannersLabel: { ja:"バナー一覧（順次追加予定）", en:"Banners (more designs coming soon)", zh:"横幅一览（后续将陆续追加）", es:"Banners (se añadirán más diseños próximamente)", pt:"Banners (mais designs em breve)" },
+      ownBanners: [
+        { name:{ ja:"デザインA", en:"Design A", zh:"设计A", es:"Diseño A", pt:"Design A" } },
+        { name:{ ja:"デザインB", en:"Design B", zh:"设计B", es:"Diseño B", pt:"Design B" } },
+        { name:{ ja:"デザインC", en:"Design C", zh:"设计C", es:"Diseño C", pt:"Design C" } }
       ]
     },
     bbs: {
@@ -548,7 +629,7 @@
       type: "text",
       title: "Disclaimer",
       body: {
-        ja:"当サイトに掲載する二次創作作品は、各原作者様への敬意を込めて個人が非営利で制作したものです。原作および関連するすべての権利は各権利者に帰属します。作品の無断転載はご遠慮ください。",
+        ja:"当サイトに掲載する二次創作作品は、個人が非営利で制作したもので、原作および関連するすべての権利は各権利者に帰属します。作品の無断転載はご遠慮ください。",
         en:"The derivative works featured on this site are non-commercial fan works created out of respect for their original creators. All rights to the original properties belong to their respective copyright holders. Please do not repost without permission.",
         zh:"本站展示的二次创作作品均为非营利性质，是出于对原作者的敬意而制作的。原作及相关的一切权利归各权利人所有。请勿擅自转载。",
         es:"Las obras derivadas que aparecen en este sitio son trabajos de fans sin fines de lucro, creados con respeto hacia sus autores originales. Todos los derechos de las obras originales pertenecen a sus respectivos titulares. Por favor, no las republiques sin permiso.",
@@ -626,6 +707,14 @@
     return `${profile}<div class="text-body">${bodyLabel}<p>${body}</p>${body2}${cta}${secondary}</div>${copyright}`;
   }
 
+  function renderQuickLinks(quickLinks){
+    if(!quickLinks) return '';
+    const linksHTML = quickLinks
+      .map(l => `<a href="${l.url}" target="_blank" rel="noopener">${l.label[lang]} →</a>`)
+      .join('');
+    return `<div class="quicklinks">${linksHTML}</div>`;
+  }
+
   function renderList(data){
     const cards = data.items.map(it => {
       const linkList = it.links
@@ -644,11 +733,58 @@
       </article>
     `;
     }).join('');
-    return `<div class="grid">${cards}</div>`;
+    return `${renderQuickLinks(data.quickLinks)}<div class="grid">${cards}</div>`;
+  }
+
+  function renderBannerSlot(url, w, h, fallbackText, img){
+    const style = `width:${w}px;height:${h}px;`;
+    const inner = img
+      ? `<img src="${img}" width="${w}" height="${h}" alt="${fallbackText}">`
+      : `<span>${fallbackText}</span>`;
+    return `<a class="banner-slot" href="${url}" target="_blank" rel="noopener" style="${style}">${inner}</a>`;
+  }
+
+  function renderBanners(data){
+    const w = data.bannerSize.w, h = data.bannerSize.h;
+
+    const friendHTML = data.friendSites
+      .map(s => renderBannerSlot(s.url, w, h, s.name[lang], s.img))
+      .join('');
+
+    const info = data.siteInfo;
+    const infoBox = `
+      <div class="site-info-box">
+        <p class="section-label">${data.siteInfoLabel[lang]}</p>
+        <dl class="site-info-list">
+          <div><dt>Site</dt><dd>${info.name} <span class="en">/ ${info.nameEn}</span></dd></div>
+          <div><dt>URL</dt><dd>${info.url}</dd></div>
+          <div><dt>Admin</dt><dd>${info.admin} <span class="en">/ ${info.adminEn}</span></dd></div>
+        </dl>
+        <p class="note">${info.note[lang]}</p>
+      </div>
+    `;
+
+    const ownHTML = data.ownBanners
+      .map(b => renderBannerSlot('#', w, h, b.name[lang], b.img))
+      .join('');
+
+    return `
+      <div class="banner-section">
+        <p class="section-label">${data.friendLabel[lang]}</p>
+        <div class="banner-grid">${friendHTML}</div>
+      </div>
+      ${infoBox}
+      <div class="banner-section">
+        <p class="section-label">${data.ownBannersLabel[lang]} (${w}×${h})</p>
+        <div class="banner-grid">${ownHTML}</div>
+      </div>
+    `;
   }
 
   function bodyHTML(data){
-    return data.type === "list" ? renderList(data) : renderTextBody(data);
+    if(data.type === "list") return renderList(data);
+    if(data.type === "banners") return renderBanners(data);
+    return renderTextBody(data);
   }
 
   const panel = document.getElementById('detail-panel');
