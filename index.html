@@ -161,6 +161,29 @@
   }
   .text-body .secondary p{margin:0 0 0.8rem; font-size:0.92rem;}
 
+  /* ---------- Info欄：初代サイトのアーカイブ画像 ---------- */
+  .archive-figure{
+    margin:1.6rem 0 0;
+    padding:1rem;
+    border:1px solid var(--line);
+    background:var(--paper);
+    max-width:56ch;
+  }
+  .archive-figure img{
+    display:block;
+    max-width:100%;
+    height:auto;
+    border:1px solid var(--line);
+  }
+  .archive-figure img + img{margin-top:0.8rem;}
+  .archive-figure .archive-banner{max-width:100px;}
+  .archive-figure figcaption{
+    margin-top:0.6rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--teal);
+  }
+
   /* ---------- Info欄：匿名プロフィール ---------- */
   .profile{
     display:flex; flex-direction:column; align-items:flex-start;
@@ -452,11 +475,11 @@
       profileLabel: { ja:"管理人について", en:"About the Host", zh:"关于站主", es:"Sobre la persona a cargo", pt:"Sobre quem está por trás do site" },
       bodyLabel: { ja:"サイトについて", en:"About this site", zh:"关于本站", es:"Sobre este sitio", pt:"Sobre este site" },
       body: {
-        ja:"サークル名：避役所.hack（無印／SIGN）の二次創作、SF系一次創作の掃き溜め",
-        en:"Circle name: Hiyakusho (避役所). Mostly creating .hack (Infection / SIGN) fan works, or original SF fiction.",
-        zh:"社团名：避役所。主要从事《.hack》（无印/SIGN）系列的二次创作，或原创科幻创作。",
-        es:"Nombre del círculo: Hiyakusho (避役所). Principalmente creo obras derivadas de .hack (Infection / SIGN) u obras originales de ciencia ficción.",
-        pt:"Nome do círculo: Hiyakusho (避役所). Principalmente crio obras derivadas de .hack (Infection / SIGN) ou ficção científica original."
+        ja:"サークル名：避役所<br>.hack（無印／SIGN）の二次創作、SF系一次創作の掃き溜め",
+        en:"Circle name: Hiyakusho (避役所).<br>Mostly creating .hack (Infection / SIGN) fan works, or original SF fiction.",
+        zh:"社团名：避役所。<br>主要从事《.hack》（无印/SIGN）系列的二次创作，或原创科幻创作。",
+        es:"Nombre del círculo: Hiyakusho (避役所).<br>Principalmente creo obras derivadas de .hack (Infection / SIGN) u obras originales de ciencia ficción.",
+        pt:"Nome do círculo: Hiyakusho (避役所).<br>Principalmente crio obras derivadas de .hack (Infection / SIGN) ou ficção científica original."
       },
       body2: {
         ja:"経緯：2004年に開設された.hackファンサイト「スケィス団ウェブサイト」と同じ管理人が運営するサイト。管理人の関心が多方面に波及していった結果の雑多コンテンツ集積地",
@@ -464,6 +487,11 @@
         zh:"缘起：本站与2004年开设的《.hack》同人网站\u201cスケィス団ウェブサイト\u201d由同一位站主运营。随着站主兴趣扩展到多个领域，逐渐变成了如今这个杂项内容的聚集地。",
         es:"Origen: Este sitio está gestionado por la misma persona que administraba el sitio de fans de .hack \u201cスケィス団ウェブサイト\u201d, lanzado en 2004. A medida que mis intereses se fueron ampliando a otras áreas, se convirtió en este cúmulo de contenido variado.",
         pt:"Origem: Este site é administrado pela mesma pessoa por trás do site de fãs de .hack \u201cスケィス団ウェブサイト\u201d, lançado em 2004. À medida que meus interesses se expandiram para outras áreas, ele se tornou este acervo de conteúdo variado."
+      },
+      archiveImage: {
+        screenshot: "images/sukeisudan-archive.png",
+        banner: "images/sukeisudan-banner.png",
+        caption: { ja:"初代ウェブサイト", en:"The Original Website", zh:"初代网站", es:"Sitio web original", pt:"Site original" }
       },
       url: "mailto:skeithdan@gmail.com",
       label: { ja:"連絡する", en:"Contact", zh:"联系", es:"Contactar", pt:"Contato" },
@@ -694,6 +722,13 @@
     const bodyLabel = data.bodyLabel ? `<p class="section-label">${data.bodyLabel[lang]}</p>` : '';
     const body = data.body[lang];
     const body2 = data.body2 ? `<p>${data.body2[lang]}</p>` : '';
+    const archiveImage = data.archiveImage ? `
+      <figure class="archive-figure">
+        <img src="${data.archiveImage.screenshot}" alt="${data.archiveImage.caption[lang]}">
+        ${data.archiveImage.banner ? `<img class="archive-banner" src="${data.archiveImage.banner}" alt="${data.archiveImage.caption[lang]}">` : ''}
+        <figcaption>${data.archiveImage.caption[lang]}</figcaption>
+      </figure>
+    ` : '';
     const cta = data.url
       ? `<a class="out" href="${data.url}" target="_blank" rel="noopener">${data.label[lang]} →</a>`
       : '';
@@ -704,7 +739,7 @@
       ? `<p class="copyright">&copy; 2026 ${i18n[lang].siteTitle}. All rights reserved.</p>`
       : '';
     const profile = data.profile ? renderProfile(data.profile, data.profileLabel) : '';
-    return `${profile}<div class="text-body">${bodyLabel}<p>${body}</p>${body2}${cta}${secondary}</div>${copyright}`;
+    return `${profile}<div class="text-body">${bodyLabel}<p>${body}</p>${body2}${archiveImage}${cta}${secondary}</div>${copyright}`;
   }
 
   function renderQuickLinks(quickLinks){
