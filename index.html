@@ -361,8 +361,6 @@
     <button data-lang="ja" class="active">JP</button>
     <button data-lang="en">EN</button>
     <button data-lang="zh">中文</button>
-    <button data-lang="es">ES</button>
-    <button data-lang="pt">PT</button>
   </div>
 </div>
 
@@ -436,22 +434,6 @@
       lastUpdated: "最后更新：2026年8月 / 私人目录",
       itemsCount: n => `共${n}项`,
     },
-    es: {
-      eyebrow: "Un archivo personal de trabajo creativo",
-      siteTitle: "Departamento Fuera de Turno",
-      siteSubtitle: "避役所",
-      tagline: "una guarida para quienes no tienen una forma fija.",
-      lastUpdated: "Última actualización: ago. 2026 / catálogo privado",
-      itemsCount: n => `${n} elemento${n === 1 ? '' : 's'}`,
-    },
-    pt: {
-      eyebrow: "Um arquivo pessoal de trabalho criativo",
-      siteTitle: "Repartição de Folga",
-      siteSubtitle: "避役所",
-      tagline: "um refúgio para quem não tem uma forma fixa.",
-      lastUpdated: "Última atualização: ago. 2026 / catálogo privado",
-      itemsCount: n => `${n} item${n === 1 ? '' : 's'}`,
-    }
   };
 
   /*
@@ -464,38 +446,32 @@
       body: {
         ja:"◾創作＆二次創作等を展示しています。<br>各版権元とは無関係のファンサイトです。",
         en:"◾Displaying original creations and fanworks.<br>This is an unofficial fan site with no affiliation to the original copyright holders.",
-        zh:"◾展示原创及二次创作作品。<br>本站为与各版权方无关的同人网站。",
-        es:"◾Aquí se muestran obras originales y trabajos derivados (fan works).<br>Este es un sitio de fans sin relación con los titulares de derechos originales.",
-        pt:"◾Aqui são exibidas obras originais e trabalhos derivados (fanworks).<br>Este é um site de fãs sem relação com os detentores dos direitos originais."
+        zh:"◾展示原创及二次创作作品。<br>本站为与各版权方无关的同人网站。"
       },
       showCopyright: true
     },
     info: {
       type: "text",
       title: "Info",
-      profileLabel: { ja:"管理人について", en:"About the Host", zh:"关于站主", es:"Sobre la persona a cargo", pt:"Sobre quem está por trás do site" },
-      bodyLabel: { ja:"サイトについて", en:"About this site", zh:"关于本站", es:"Sobre este sitio", pt:"Sobre este site" },
+      profileLabel: { ja:"管理人について", en:"About the Host", zh:"关于站主" },
+      bodyLabel: { ja:"サイトについて", en:"About this site", zh:"关于本站" },
       body: {
         ja:"サークル名：避役所<br>.hack（無印／SIGN）の二次創作、SF系一次創作の掃き溜め",
         en:"Circle name: Hiyakusho (避役所).<br>Mostly creating .hack (Infection / SIGN) fan works, or original SF fiction.",
-        zh:"社团名：避役所。<br>主要从事《.hack》（无印/SIGN）系列的二次创作，或原创科幻创作。",
-        es:"Nombre del círculo: Hiyakusho (避役所).<br>Principalmente creo obras derivadas de .hack (Infection / SIGN) u obras originales de ciencia ficción.",
-        pt:"Nome do círculo: Hiyakusho (避役所).<br>Principalmente crio obras derivadas de .hack (Infection / SIGN) ou ficção científica original."
+        zh:"社团名：避役所。<br>主要从事《.hack》（无印/SIGN）系列的二次创作，或原创科幻创作。"
       },
       body2: {
         ja:"経緯：2004年に開設された.hackファンサイト「スケィス団ウェブサイト」の後継的位置付け。管理人の関心が多方面に波及していった結果、雑多なコンテンツの集積地となった個人運営サイト",
         en:"Background: Run by the same person behind the .hack fan site \u201cSukeisu-dan Website,\u201d launched in 2004. As my interests spread into other areas, it grew into this scattershot collection of content.",
-        zh:"缘起：本站与2004年开设的《.hack》同人网站\u201cスケィス団ウェブサイト\u201d由同一位站主运营。随着站主兴趣扩展到多个领域，逐渐变成了如今这个杂项内容的聚集地。",
-        es:"Origen: Este sitio está gestionado por la misma persona que administraba el sitio de fans de .hack \u201cスケィス団ウェブサイト\u201d, lanzado en 2004. A medida que mis intereses se fueron ampliando a otras áreas, se convirtió en este cúmulo de contenido variado.",
-        pt:"Origem: Este site é administrado pela mesma pessoa por trás do site de fãs de .hack \u201cスケィス団ウェブサイト\u201d, lançado em 2004. À medida que meus interesses se expandiram para outras áreas, ele se tornou este acervo de conteúdo variado."
+        zh:"缘起：本站与2004年开设的《.hack》同人网站\u201cスケィス団ウェブサイト\u201d由同一位站主运营。随着站主兴趣扩展到多个领域，逐渐变成了如今这个杂项内容的聚集地。"
       },
       archiveImage: {
         screenshot: "images/sukeisudan-archive.png",
         banner: "images/sukeisudan-banner.png",
-        caption: { ja:"初代ウェブサイト", en:"The Original Website", zh:"初代网站", es:"Sitio web original", pt:"Site original" }
+        caption: { ja:"初代ウェブサイト", en:"The Original Website", zh:"初代网站" }
       },
       url: "mailto:skeithdan@gmail.com",
-      label: { ja:"連絡する", en:"Contact", zh:"联系", es:"Contactar", pt:"Contato" },
+      label: { ja:"連絡する", en:"Contact", zh:"联系" },
       profile: {
         nameJa: "家逸 ミア",
         nameEn: "Mia Yeats",
@@ -503,16 +479,12 @@
           {
             ja:"なにかのきづきをえたいどこかのだれか",
             en:"Someone, from somewhere, hoping to stumble onto some kind of realization.",
-            zh:"来自某处的某人，渴望获得某种领悟。",
-            es:"Alguien, de algún lugar, que espera alcanzar algún tipo de comprensión.",
-            pt:"Alguém, de algum lugar, que espera alcançar algum tipo de compreensão."
+            zh:"来自某处的某人，渴望获得某种领悟。"
           },
           {
             ja:"たべるのがすき。",
             en:"Likes to eat.",
-            zh:"喜欢吃东西。",
-            es:"Le gusta comer.",
-            pt:"Gosta de comer."
+            zh:"喜欢吃东西。"
           }
         ]
       }
@@ -521,26 +493,26 @@
       type: "list",
       title: "Blog",
       quickLinks: [
-        { url:"https://miayeats.hatenablog.com/", label:{ja:"はてなブログで食レポ・旅レポを見る",en:"See food & travel reports on Hatena Blog",zh:"在Hatena Blog查看美食·旅行报告",es:"Ver reseñas de comida y viajes en Hatena Blog",pt:"Ver relatos de comida e viagem no Hatena Blog"} },
-        { url:"#", label:{ja:"Substackで雑記を見る",en:"See notes & essays on Substack",zh:"在Substack查看随笔",es:"Ver notas y ensayos en Substack",pt:"Ver notas e ensaios no Substack"} }
+        { url:"https://miayeats.hatenablog.com/", label:{ja:"はてなブログで食レポ・旅レポを見る",en:"See food & travel reports on Hatena Blog",zh:"在Hatena Blog查看美食·旅行报告"} },
+        { url:"#", label:{ja:"Substackで雑記を見る",en:"See notes & essays on Substack",zh:"在Substack查看随笔"} }
       ],
       items: [
         {
           num:"LOG.01",
-          title:{ja:"食レポ・旅レポ",en:"Food & travel reports",zh:"美食·旅行报告",es:"Reseñas de comida y viajes",pt:"Relatos de comida e viagem"},
-          desc:{ja:"食べたもの・行った場所の記録。写真多めの雑記",en:"Notes on things I've eaten and places I've been, mostly photos.",zh:"关于吃过的食物和去过的地方的记录，配图较多。",es:"Notas sobre lo que he comido y los lugares que he visitado, con muchas fotos.",pt:"Notas sobre o que comi e os lugares que visitei, com bastante fotos."},
+          title:{ja:"食レポ・旅レポ",en:"Food & travel reports",zh:"美食·旅行报告"},
+          desc:{ja:"食べたもの・行った場所の記録。写真多めの雑記",en:"Notes on things I've eaten and places I've been, mostly photos.",zh:"关于吃过的食物和去过的地方的记录，配图较多。"},
           tags:["はてな","日本語"],
           links: [
-            { url:"https://miayeats.hatenablog.com/", label:{ja:"はてなブログで読む",en:"Read on Hatena Blog",zh:"在Hatena Blog阅读",es:"Leer en Hatena Blog",pt:"Ler no Hatena Blog"} }
+            { url:"https://miayeats.hatenablog.com/", label:{ja:"はてなブログで読む",en:"Read on Hatena Blog",zh:"在Hatena Blog阅读"} }
           ]
         },
         {
           num:"LOG.02",
-          title:{ja:"考えのまとめ（英語）",en:"Notes & essays",zh:"随笔与思考（英语）",es:"Notas y ensayos (en inglés)",pt:"Notas e ensaios (em inglês)"},
-          desc:{ja:"考えていることの整理。",en:"Longer-form thoughts and essays.",zh:"整理想法的随笔。",es:"Notas y reflexiones más extensas.",pt:"Notas e reflexões mais longas."},
+          title:{ja:"考えのまとめ（英語）",en:"Notes & essays",zh:"随笔与思考（英语）"},
+          desc:{ja:"考えていることの整理。",en:"Longer-form thoughts and essays.",zh:"整理想法的随笔。"},
           tags:["Substack","English"],
           links: [
-            { url:"#", label:{ja:"Substackで読む",en:"Read on Substack",zh:"在Substack阅读",es:"Leer en Substack",pt:"Ler no Substack"} }
+            { url:"#", label:{ja:"Substackで読む",en:"Read on Substack",zh:"在Substack阅读"} }
           ]
         }
       ]
@@ -549,27 +521,27 @@
       type: "list",
       title: "Novels",
       quickLinks: [
-        { url:"https://kakuyomu.jp/users/miayeats", label:{ja:"カクヨムで一次創作を見る",en:"See original fiction on Kakuyomu",zh:"在Kakuyomu查看原创作品",es:"Ver ficción original en Kakuyomu",pt:"Ver ficção original no Kakuyomu"} },
-        { url:"https://www.pixiv.net/users/10446560/novels", label:{ja:"pixivで二次創作を見る",en:"See fanfiction on pixiv",zh:"在pixiv查看二次创作",es:"Ver fanfiction en pixiv",pt:"Ver fanfiction no pixiv"} }
+        { url:"https://kakuyomu.jp/users/miayeats", label:{ja:"カクヨムで一次創作を見る",en:"See original fiction on Kakuyomu",zh:"在Kakuyomu查看原创作品"} },
+        { url:"https://www.pixiv.net/users/10446560/novels", label:{ja:"pixivで二次創作を見る",en:"See fanfiction on pixiv",zh:"在pixiv查看二次创作"} }
       ],
       items: [
         {
           num:"NOV.01",
-          title:{ja:"（一次創作）作品タイトルを入力",en:"(Original) Work title",zh:"（原创）作品标题",es:"(Original) Título de la obra",pt:"(Original) Título da obra"},
-          desc:{ja:"オリジナルSF作品。",en:"Original SF work.",zh:"原创科幻作品。",es:"Obra de ciencia ficción original.",pt:"Obra de ficção científica original."},
+          title:{ja:"（一次創作）作品タイトルを入力",en:"(Original) Work title",zh:"（原创）作品标题"},
+          desc:{ja:"オリジナルSF作品。",en:"Original SF work.",zh:"原创科幻作品。"},
           tags:["オリジナルSF","連載中"],
           links: [
-            { url:"https://kakuyomu.jp/users/miayeats", label:{ja:"カクヨムで読む（日本語）",en:"Read on Kakuyomu (Japanese)",zh:"在Kakuyomu阅读（日语）",es:"Leer en Kakuyomu (japonés)",pt:"Ler no Kakuyomu (japonês)"} },
-            { url:"#", label:{ja:"Read on AO3（英語・申請中）",en:"Read on AO3 (English, pending)",zh:"在AO3阅读（英语，申请中）",es:"Leer en AO3 (inglés, pendiente)",pt:"Ler no AO3 (inglês, pendente)"} }
+            { url:"https://kakuyomu.jp/users/miayeats", label:{ja:"カクヨムで読む（日本語）",en:"Read on Kakuyomu (Japanese)",zh:"在Kakuyomu阅读（日语）"} },
+            { url:"#", label:{ja:"Read on AO3（英語・申請中）",en:"Read on AO3 (English, pending)",zh:"在AO3阅读（英语，申请中）"} }
           ]
         },
         {
           num:"NOV.02",
-          title:{ja:"（二次創作）作品タイトルを入力",en:"(Fanfic) Work title",zh:"（同人）作品标题",es:"(Fanfic) Título de la obra",pt:"(Fanfic) Título da obra"},
-          desc:{ja:"二次創作小説。イラストと同じくpixivに掲載",en:"A derivative fan novel, posted on pixiv alongside the illustrations.",zh:"二次创作小说，与插画一样发布在pixiv上。",es:"Novela derivada de fans, publicada en pixiv junto con las ilustraciones.",pt:"Novela derivada de fãs, publicada no pixiv junto com as ilustrações."},
+          title:{ja:"（二次創作）作品タイトルを入力",en:"(Fanfic) Work title",zh:"（同人）作品标题"},
+          desc:{ja:"二次創作小説。イラストと同じくpixivに掲載",en:"A derivative fan novel, posted on pixiv alongside the illustrations.",zh:"二次创作小说，与插画一样发布在pixiv上。"},
           tags:["二次創作"],
           links: [
-            { url:"https://www.pixiv.net/users/10446560", label:{ja:"pixivで読む",en:"Read on pixiv",zh:"在pixiv阅读",es:"Leer en pixiv",pt:"Ler no pixiv"} }
+            { url:"https://www.pixiv.net/users/10446560", label:{ja:"pixivで読む",en:"Read on pixiv",zh:"在pixiv阅读"} }
           ]
         }
       ]
@@ -578,22 +550,22 @@
       type: "list",
       title: "Illustration",
       quickLinks: [
-        { url:"https://www.pixiv.net/users/10446560/illustrations", label:{ja:"pixivでイラストを見る",en:"View illustrations on pixiv",zh:"在pixiv查看插画",es:"Ver ilustraciones en pixiv",pt:"Ver ilustrações no pixiv"} }
+        { url:"https://www.pixiv.net/users/10446560/illustrations", label:{ja:"pixivでイラストを見る",en:"View illustrations on pixiv",zh:"在pixiv查看插画"} }
       ],
       items: [
         {
           num:"ILL.01",
-          title:{ja:"イラスト①",en:"Illustration 1",zh:"插画一",es:"Ilustración 1",pt:"Ilustração 1"},
-          desc:{ja:"禍々しき波関連",en:"Related to \u201cthe ominous wave.\u201d",zh:"与\u201c禍々しき波（不祥之波）\u201d相关。",es:"Relacionado con \u201cla ola siniestra.\u201d",pt:"Relacionado com \u201ca onda sinistra.\u201d"},
+          title:{ja:"イラスト①",en:"Illustration 1",zh:"插画一"},
+          desc:{ja:"禍々しき波関連",en:"Related to \u201cthe ominous wave.\u201d",zh:"与\u201c禍々しき波（不祥之波）\u201d相关。"},
           tags:["デジタル","2026"], url:"https://www.pixiv.net/users/10446560",
-          label:{ja:"pixivで見る",en:"View on pixiv",zh:"在pixiv查看",es:"Ver en pixiv",pt:"Ver no pixiv"}
+          label:{ja:"pixivで見る",en:"View on pixiv",zh:"在pixiv查看"}
         },
         {
           num:"ILL.02",
-          title:{ja:"イラスト②",en:"Illustration 2",zh:"插画二",es:"Ilustración 2",pt:"Ilustração 2"},
-          desc:{ja:"ギャラリー全体へのリンクにしてもOK。",en:"Can also link to your full gallery.",zh:"也可以链接到完整的画廊页面。",es:"También puede enlazar a tu galería completa.",pt:"Também pode linkar para sua galeria completa."},
+          title:{ja:"イラスト②",en:"Illustration 2",zh:"插画二"},
+          desc:{ja:"ギャラリー全体へのリンクにしてもOK。",en:"Can also link to your full gallery.",zh:"也可以链接到完整的画廊页面。"},
           tags:["ギャラリー"], url:"https://www.pixiv.net/users/10446560",
-          label:{ja:"pixivで見る",en:"View on pixiv",zh:"在pixiv查看",es:"Ver en pixiv",pt:"Ver no pixiv"}
+          label:{ja:"pixivで見る",en:"View on pixiv",zh:"在pixiv查看"}
         }
       ]
     },
@@ -601,18 +573,18 @@
       type: "banners",
       title: "Link",
       bannerSize: { w:88, h:31 },
-      friendLabel: { ja:"お世話になっているサイト", en:"Sites We Appreciate", zh:"特别感谢的网站", es:"Sitios a los que agradecemos", pt:"Sites aos quais somos gratos" },
+      friendLabel: { ja:"お世話になっているサイト", en:"Sites We Appreciate", zh:"特别感谢的网站" },
       friendSites: [
         {
-          name: { ja:"相互リンク先の名前", en:"Linked site name", zh:"友情链接站点名称", es:"Nombre del sitio enlazado", pt:"Nome do site vinculado" },
+          name: { ja:"相互リンク先の名前", en:"Linked site name", zh:"友情链接站点名称" },
           url: "#"
         },
         {
-          name: { ja:"お世話になっているサイト", en:"A site you'd like to credit", zh:"想要致谢的网站", es:"Un sitio al que quieras dar crédito", pt:"Um site que você queira creditar" },
+          name: { ja:"お世話になっているサイト", en:"A site you'd like to credit", zh:"想要致谢的网站" },
           url: "#"
         }
       ],
-      siteInfoLabel: { ja:"当サイトについて（リンク用）", en:"About This Site (for Linking)", zh:"关于本站（用于链接）", es:"Sobre este sitio (para enlazar)", pt:"Sobre este site (para link)" },
+      siteInfoLabel: { ja:"当サイトについて（リンク用）", en:"About This Site (for Linking)", zh:"关于本站（用于链接）" },
       siteInfo: {
         name: "避役所", nameEn: "Off-Duty Bureau",
         url: "https://mia-yeats.github.io/hiyakusho/",
@@ -620,16 +592,14 @@
         note: {
           ja:"当サイトはリンクフリーです。リンクの際は下記バナーをご自由にお使いください。",
           en:"This site is link-free — feel free to link without asking. Banners for linking are available below.",
-          zh:"本站欢迎自由链接，无需另行告知。可自由使用下方横幅进行链接。",
-          es:"Este sitio es de enlace libre: puedes enlazarlo sin avisar. Los banners para enlazar están disponibles abajo.",
-          pt:"Este site é de link livre: sinta-se à vontade para linkar sem avisar. Banners para link estão disponíveis abaixo."
+          zh:"本站欢迎自由链接，无需另行告知。可自由使用下方横幅进行链接。"
         }
       },
-      ownBannersLabel: { ja:"バナー一覧（順次追加予定）", en:"Banners (more designs coming soon)", zh:"横幅一览（后续将陆续追加）", es:"Banners (se añadirán más diseños próximamente)", pt:"Banners (mais designs em breve)" },
+      ownBannersLabel: { ja:"バナー一覧（順次追加予定）", en:"Banners (more designs coming soon)", zh:"横幅一览（后续将陆续追加）" },
       ownBanners: [
-        { name:{ ja:"デザインA", en:"Design A", zh:"设计A", es:"Diseño A", pt:"Design A" } },
-        { name:{ ja:"デザインB", en:"Design B", zh:"设计B", es:"Diseño B", pt:"Design B" } },
-        { name:{ ja:"デザインC", en:"Design C", zh:"设计C", es:"Diseño C", pt:"Design C" } }
+        { name:{ ja:"デザインA", en:"Design A", zh:"设计A" } },
+        { name:{ ja:"デザインB", en:"Design B", zh:"设计B" } },
+        { name:{ ja:"デザインC", en:"Design C", zh:"设计C" } }
       ]
     },
     bbs: {
@@ -638,21 +608,17 @@
       body: {
         ja:"感想や交流のための掲示板です。外部サービスの掲示板を利用しています。",
         en:"A message board for comments and conversation, hosted on an external service.",
-        zh:"用于留言与交流的留言板，使用外部服务搭建。",
-        es:"Un foro de mensajes para comentarios y conversación, alojado en un servicio externo.",
-        pt:"Um fórum de mensagens para comentários e conversas, hospedado em um serviço externo."
+        zh:"用于留言与交流的留言板，使用外部服务搭建。"
       },
       url: "#",
-      label: { ja:"掲示板へ", en:"Go to board", zh:"前往留言板", es:"Ir al foro", pt:"Ir ao fórum" },
+      label: { ja:"掲示板へ", en:"Go to board", zh:"前往留言板" },
       secondaryBody: {
         ja:"リアルタイムでの交流はDiscordサーバーでも行っています。",
         en:"For real-time chat, you can also find us on Discord.",
-        zh:"如需即时交流，也欢迎加入Discord服务器。",
-        es:"Para conversar en tiempo real, también puedes encontrarnos en Discord.",
-        pt:"Para conversas em tempo real, você também pode nos encontrar no Discord."
+        zh:"如需即时交流，也欢迎加入Discord服务器。"
       },
       secondaryUrl: "#",
-      secondaryLabel: { ja:"Discordに参加する", en:"Join Discord", zh:"加入Discord", es:"Unirse a Discord", pt:"Entrar no Discord" }
+      secondaryLabel: { ja:"Discordに参加する", en:"Join Discord", zh:"加入Discord" }
     },
     disclaimer: {
       type: "text",
@@ -660,9 +626,7 @@
       body: {
         ja:"当サイトに掲載する二次創作作品は、個人が非営利で制作したもので、原作および関連するすべての権利は各権利者に帰属します。作品の無断転載はご遠慮ください。",
         en:"The derivative works featured on this site are non-commercial fan works created out of respect for their original creators. All rights to the original properties belong to their respective copyright holders. Please do not repost without permission.",
-        zh:"本站展示的二次创作作品均为非营利性质，是出于对原作者的敬意而制作的。原作及相关的一切权利归各权利人所有。请勿擅自转载。",
-        es:"Las obras derivadas que aparecen en este sitio son trabajos de fans sin fines de lucro, creados con respeto hacia sus autores originales. Todos los derechos de las obras originales pertenecen a sus respectivos titulares. Por favor, no las republiques sin permiso.",
-        pt:"As obras derivadas apresentadas neste site são trabalhos de fã sem fins lucrativos, criados com respeito pelos autores originais. Todos os direitos das obras originais pertencem aos seus respectivos detentores. Por favor, não republique sem permissão."
+        zh:"本站展示的二次创作作品均为非营利性质，是出于对原作者的敬意而制作的。原作及相关的一切权利归各权利人所有。请勿擅自转载。"
       }
     },
     etc: {
@@ -671,9 +635,7 @@
       body: {
         ja:"分類未定のもの、試験的な取り組みなどを置く暫定スペースです。（準備中）",
         en:"A holding space for anything uncategorized or experimental. (Under construction)",
-        zh:"用于存放未分类或实验性内容的临时区域。（建设中）",
-        es:"Un espacio provisional para lo aún sin clasificar o experimental. (En construcción)",
-        pt:"Um espaço provisório para o que ainda não foi categorizado ou é experimental. (Em construção)"
+        zh:"用于存放未分类或实验性内容的临时区域。（建设中）"
       }
     }
   };
